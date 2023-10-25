@@ -28,7 +28,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+//                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-14")
+//                commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
+                implementation("com.arkivanov.decompose:decompose:2.1.3")
+
             }
         }
         val commonTest by getting {
