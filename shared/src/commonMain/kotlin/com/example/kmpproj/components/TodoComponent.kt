@@ -26,7 +26,5 @@ class DefaultTodoComponent(
             )
         )
 
-    override fun onItemClicked(item: TodoItem) {
-        onItemSelected(item)
-    }
+    override fun onItemClicked(item: TodoItem) { onItemSelected(item) }
 }
