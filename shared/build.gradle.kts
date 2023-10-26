@@ -25,18 +25,28 @@ kotlin {
         }
     }
 
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class.java).all {
+        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class.java).all {
+            export("dev.icerock.moko:mvvm-core:0.16.1")
+            export("dev.icerock.moko:mvvm-state:0.16.1")
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-14")
-//                commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
-                implementation("com.arkivanov.decompose:decompose:2.1.3")
-
+                api("dev.icerock.moko:mvvm-compose:0.16.1") // api mvvm-core, getViewModel for Compose Multiplatfrom
+                api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlin.test)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                api("dev.icerock.moko:mvvm-flow-compose:0.16.1")
             }
         }
     }
